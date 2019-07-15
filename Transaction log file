@@ -1,0 +1,39 @@
+1. Use fn_dblog
+
+    --
+    Select * FROM sys.fn_dblog(NULL,NULL)
+    
+  --To see transactions for inserted rows, run:
+      SELECT [Current LSN], 
+             Operation, 
+             Context, 
+             [Transaction ID], 
+             [Begin time]
+             FROM sys.fn_dblog
+         (NULL, NULL)
+        WHERE operation IN
+         ('LOP_INSERT_ROWS');
+
+
+2. Use fn_dump_dblog
+    To read transaction log native or natively
+    compressed backups, even without the online database, use the fn_dump_dblog function. Again, this function is undocumented
+
+          SELECT [Current LSN], 
+                 Operation, 
+                 Context, 
+                 [Transaction ID], 
+               [transaction name],
+                 Description
+          FROM fn_dump_dblog
+          (NULL,NULL,N'DISK',1,N'E:\ApexSQL\backups\AdventureWorks2012_05222013.trn', 
+          DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT, 
+          DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,
+          DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,
+          DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,
+          DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,
+          DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,
+          DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT, 
+          DEFAULT);
+          
+         
