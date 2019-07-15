@@ -1,0 +1,100 @@
+Daily Checklist
+--------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+
+1. Backups - 
+    Check your backups to validate that they were successfully created per your process. ◦MSSQLTips.com Category: Backup and Recovery
+2. Nightly Processing - 
+    Review the nightly or early morning processes. 
+3. SQL Server Error Log - 
+    Review the SQL Server error log for any errors or security issues (successful or failed logins) that are unexpected. 
+    ◦SQL Server 2005 Exposed - Log File Viewer
+
+3. Windows Event Log - 
+    Review the Application Event Log at a minimum to find out if any Windows or hardware related errors or warnings are being written. 
+    ◦Some of the hardware vendors write warnings to the Windows Event Log when they anticipate an error is going to occur, so this gives
+    you the opportunity to be proactive and correct the problem during a scheduled down time, rather than having a mid day emergency. 
+    ◦SQL Server 2005 Exposed - Log File Viewer
+4. SQL Server Agent Jobs - 
+    Review for failed SQL Server Agent Jobs. ◦Finding SQL Server Agent Job Failures
+
+5. HA or DR Logs - 
+    Check your high availability and/or disaster recovery process logs.  Depending on the solution 
+    (Log Shipping, Clustering, Replication, Database Mirroring, CDP, etc.) that you are using dictates what needs to be checked. 
+6. Performance Logs - 
+    Review the performance metrics to determine if your baseline was exceeded or if you had slow points during the day that 
+    need to be reviewed. ◦MSSQLTips.com Category: Performance Tuning
+7. Security Logs - Review the security logs from a third party solution or from the SQL Server Error Logs to determine 
+    if you had a breach or a violation in one of your policies. 
+8. Centralized error handling - 
+    If you have an application, per SQL Server or enterprise level logging, then review those logs for any unexpected errors.  
+    ◦Standardized Error Handling and Centralized Logging
+9. Storage - 
+    Validate you have sufficient storage on your drives to support your databases, backups, batch processes, etc. in the short term. 
+10. Service Broker - 
+    Check the transmission and user defined queues to make sure data is properly being processed in your applications. 
+    ◦MSSQLTips.com Category: Service Broker
+11. Corrective Actions - 
+    Take corrective actions based on the issues and/or errors that you found. 
+12. Improvements - 
+    Look for opportunities to improve your environment based on the review and analysis you have performed. 
+13. Learn something new - Although this review and correction process could be time consuming, 
+    take some time every day to learn something new to improve your knowledge of the technology you work on every day.
+
+--------------------------------------------------------------------------------------
+Weekly or Monthly Checklist
+-------------------------------------------------------------------------------
+1. Backup Verification (Comprehensive)- 
+    Verify your backups and test on a regular basis to ensure the overall process works as expected.  What is meant by this is to: 
+      ◦Contact your off site tape vendor to obtain a tape 
+      ◦Validate that the tape goes to the correct office 
+      ◦Validate that the vendor delivers the correct tape 
+      ◦Validate that the vendor delivers the tape in the correct time period 
+      ◦Validate that the software version you use to perform the restore is compatible with the version from the tape 
+      ◦Validate that the tape does not have any restore errors 
+      ◦Validate that sufficient storage is available to move the backup to the needed SQL Server 
+      ◦Validate that the SQL Server versions are compatible to restore the database 
+      ◦Validate that no error messages are generated during the restore process 
+      ◦Validate that the database is accurately restored and the application will function properly
+2. Backup Verification (Simple) - 
+   Verify your backups on a regular basis. 
+      ◦Maintenance Tasks: Automating the RESTORE VERIFYONLY Process  
+      ◦Verifying Backups with the RESTORE VERIFYONLY Statement
+
+3. Windows, SQL Server or Application Updates - 
+    Check for service packs/patches that need to be installed on your SQL Server from either a hardware, OS, DBMS 
+    or application perspective ◦MSSQLTips.com Category: Service Packs / Patches
+
+4. Capacity Planning - 
+    Perform capacity planning to ensure you will have sufficient storage for a specific period of time such as 
+    for 6, 12 or 18 months. ◦Easing the Capacity Planning Burden
+
+5. Fragmentation - 
+    Review the fragmentation for your databases to determine if you particular indexes must be rebuilt based on analysis from a 
+    backup SQL Server. ◦MSSQLTips.com Category: Fragmentation
+
+6. Maintenance - 
+    Perform database maintenance on a weekly or monthly basis.  ◦MSSQLTips.com Category: Maintenance 
+
+7. Security - 
+    Remove unneeded logins and users for individuals that have left the organization, had a change in position, etc. 
+8. Shrink databases - 
+    If databases or transaction logs are larger, than necessary shrink those files to free up disk space. 
+      ◦SQL Server 2000 to 2005 Crosswalk - Database Maintenance Plan Wizard to SQL Server Integration Services (SSIS) 
+
+----------------------------------------------------------------------------
+Opportunities for Automation 
+---------------------------------------------------------------------------------
+1. Setup alerts for specific error levels or error messages that impact your SQL Servers in order to be notified automatically. 
+  ◦Database Backup and Restore Failure Notifications
+
+2. Setup Jobs to query for specific conditions in your tables to validate data was loaded or data is being added to specific tables 
+    based on your business processes throughout the day. 
+4. Setup notification on Job success, failure or completion. 
+    ◦One word of warning is to check your business critical Jobs on a regular basis just to be sure they are working properly.  
+    Nothing is worse than finding out a key process has been failing for days, weeks or months and the reason notifications 
+    have not been sent are due to an incorrect configuration, full mailbox, etc.  
+    It may be 30 minutes on a weekly basis that is time well spent.
+
+4. Setup centralized error handling on a per SQL Server, application or enterprise basis then determine the business rules for 
+    specific error conditions.
